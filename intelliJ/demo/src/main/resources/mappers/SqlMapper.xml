@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.computer.study.mapper.SqlMapper">
+
+    <insert id="insert" parameterType="com.computer.study.vo.SqlVO">
+        insert into aTable values(null, #{id}, #{name})
+    </insert>
+    <select id="list" parameterType="com.computer.study.vo.SqlVO">
+        select * from aTable;
+    </select>
+    <select id="read" parameterType="com.computer.study.vo.SqlVO">
+        select * from aTable where autoNumber = #{autoNumber}
+    </select>
+    <delete id="delete" parameterType="com.computer.study.vo.SqlVO">
+        delete from aTable where autoNumber = #{autoNumber}
+    </delete>
+    <update id="update" parameterType="com.computer.study.vo.SqlVO">
+        update aTable set id=#{id}, name=#{name} where autoNumber=#{autoNumber}
+    </update>
+
+</mapper>
