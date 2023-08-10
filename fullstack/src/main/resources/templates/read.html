@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="update" method="post">
+        <div class="form-group">
+            <label for="fno">번호</label>
+            <input type="text" class="form-control" id="fno" name="fno" th:value="${one.fno}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="father">아빠이름</label>
+            <input type="text" class="form-control" id="father" name="father" th:value="${one.father}">
+        </div>
+        <div class="form-group">
+            <label for="mother">엄마이름</label>
+            <input type="text" class="form-control"  id="mother" name="mother" th:value="${one.mother}">
+        </div>
+        <div class="form-group">
+            <label for="brother">동생이름</label>
+            <input type="text" class="form-control"  id="brother" name="brother" th:value="${one.brother}">
+        </div>
+        <button type="submit" class="btn btn-secondary">수정</button>
+    </form>
+</body>
+</html>
+<!--재실행: shift + 10-->

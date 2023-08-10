@@ -1,0 +1,11 @@
+INDEX VERSION 1.131
+C:\Users\mondi\Documents\workspace-sts-3.9.18.RELEASE\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1926814055.index
+\NewProject\src\main\java
+C:\Users\mondi\Documents\workspace-sts-3.9.18.RELEASE\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2560564043.index
+\0810\src\main\java
+C:\Users\mondi\Documents\workspace-sts-3.9.18.RELEASE\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\332703762.index
+\spring0809_2\src\main\java
+C:\Users\mondi\Documents\workspace-sts-3.9.18.RELEASE\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1080547546.index
+\newProject\src\main\java
+C:\Users\mondi\Documents\workspace-sts-3.9.18.RELEASE\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2525334560.index
+\newProject2\src\main\java

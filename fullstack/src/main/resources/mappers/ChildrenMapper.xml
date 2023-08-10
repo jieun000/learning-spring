@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.computer.kukje.fullstack.mapper.ChildrenMapper">
+    <!--insert는 추가, id="함수이름-->
+    <insert id="insertOne" parameterType="com.computer.kukje.fullstack.vo.ChildrenVO">
+        insert into children values(#{cno},#{name},#{fno})
+    </insert>
+
+
+
+
+<!--    <select id="listAll" resultType="com.computer.kukje.fullstack.vo.FamilyVO">-->
+<!--        select * from family-->
+<!--    </select>-->
+<!--    <select id="getOne" resultType="com.computer.kukje.fullstack.vo.FamilyVO" parameterType="Long">-->
+<!--        select * from family where fno=#{fno}-->
+<!--    </select>-->
+<!--    <delete id="delete" parameterType="long">-->
+<!--        delete from family where fno=#{fno}-->
+<!--    </delete>-->
+<!--    <update id="update" parameterType="com.computer.kukje.fullstack.vo.FamilyVO">-->
+<!--        update family set father=#{father}, mother=#{mother}, brother=#{brother} where fno=#{fno}-->
+<!--    </update>-->
+</mapper>

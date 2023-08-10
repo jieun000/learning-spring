@@ -13,7 +13,6 @@ import java.util.List;
 
 @Controller
 public class SqlController {
-
     @Setter(onMethod_ = @Autowired)
     private SqlMapper mapper;
 
