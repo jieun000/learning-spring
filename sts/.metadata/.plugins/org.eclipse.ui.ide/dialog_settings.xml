@@ -108,6 +108,11 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\mondi\Desktop\A\Spring\sts\javaAdvanced0810"/>
+			<item value="C:\Users\mondi\Desktop\A\Spring\sts\javaBasic0803_1"/>
+			<item value="C:\Users\mondi\Desktop\A\Spring\sts\listTest"/>
+			<item value="C:\Users\mondi\Desktop\A\Spring\sts\java0727_"/>
+			<item value="C:\Users\mondi\Desktop\A\Spring\sts\javaAdvanced0811"/>
 			<item value="C:\Users\mondi\Documents\workspace-sts-3.9.18.RELEASE\spring0809_2"/>
 		</list>
 	</section>
