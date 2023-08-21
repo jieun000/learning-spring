@@ -3,7 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
@@ -21,6 +23,10 @@
 		<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
 			<constructor-arg ref="hikariConfig"></constructor-arg>
 		</bean>
-										<!-- 클래스 찾는 것 -->
-		<context:component-scan base-package="com.mycompany.myapp.mapper" />
+							
+		<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+			<property name="dataSource" ref="dataSource"></property>
+		</bean>	
+							<!-- 클래스 찾는 것 -->
+		<mybatis-spring:scan base-package="com.mycompany.myapp.mapper"></mybatis-spring:scan>
 </beans>
