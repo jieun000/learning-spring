@@ -2,6 +2,7 @@
 <aop-reference-model>
 <aop-project name="NewProject"/>
 <aop-project name="spring04_controller"/>
+<aop-project name="spring05_service"/>
 <aop-project name="spring02_mapper"/>
 <aop-project name="spring01_db"/>
 <aop-project name="spring03_mapper+"/>
