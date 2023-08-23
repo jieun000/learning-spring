@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.myapp.mapper.BoardMapper;
-import com.mycompany.myapp.mapper.BoardService;
 import com.mycompany.myapp.vo.BoardVO;
 
 import lombok.Setter;

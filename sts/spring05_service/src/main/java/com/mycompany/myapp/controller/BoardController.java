@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.mycompany.myapp.mapper.BoardService;
+import com.mycompany.myapp.service.BoardService;
 import com.mycompany.myapp.vo.BoardVO;
 
 import lombok.Setter;
@@ -37,7 +37,7 @@ public class BoardController {
 	public String insertPost(BoardVO vo, RedirectAttributes rttr) {
 		System.out.println("컨트롤러에서 추가 vo: " + vo);
 		service.insertS(vo);
-		// rttr.addFlashAttribute("result", vo.getBno());
+		rttr.addFlashAttribute("result", vo.getBno());
 		return "redirect:/board/list";
 	}
 	
@@ -55,7 +55,7 @@ public class BoardController {
 		return "redirect:/board/list";
 	}                               
 	
-	@GetMapping
+	@GetMapping("/delete")
 	public String delete(Long bno) {
 		service.deleteS(bno);
 		return "redirect:/board/list";

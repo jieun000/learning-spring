@@ -17,7 +17,8 @@
   		delete from tbl_board1 where bno = #{bno}
   	</delete>
 	<update id="update" parameterType="com.mycompany.myapp.vo.BoardVO">
-		update tbl_board1 set title=#{title}, content=#{content}, writer=#{writer}, updateDate=sysdate where bno=#{bno}
+		update tbl_board1 set title=#{title}, content=#{content}, writer=#{writer}, updateDate=sysdate
+ 	 		 where bno=#{bno}
 	</update>
 	<insert id="insert" parameterType="com.mycompany.myapp.vo.BoardVO">
 		insert into tbl_board1 values(seq_board1.nextval, #{title}, #{content}, #{writer}, sysdate, sysdate)
