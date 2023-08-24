@@ -45,7 +45,7 @@ public class BoardController {
 		model.addAttribute("one", vo);
 		return "read";
 	}
-	// 에러
+	
 	@PostMapping("/update")
 	public String update(BoardVO vo) {
 		mapper.update(vo);
