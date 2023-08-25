@@ -5,13 +5,23 @@
   
   <mapper namespace="com.mycompany.myapp.mapper.BoardMapper">
   	<select id="getList" resultType="com.mycompany.myapp.vo.BoardVO">
-  		select * from tbl_board1 order by bno
+  		<![CDATA[ /*+ INDEX_DESC(tbl_board1 pk_bno) */
+  		select * from tbl_board1
+  		]]>
   	</select>
   	<select id="getOne" parameterType="com.mycompany.myapp.vo.BoardVO" resultType="com.mycompany.myapp.vo.BoardVO">
   		select * from tbl_board1 where bno=#{bno}
   	</select>
   	<select id="getListWithWriter" parameterType="String" resultType="com.mycompany.myapp.vo.BoardVO">
   		select * from tbl_board1 where writer=#{writer}
+<!--   		페이지 번호 후
+  		<![CDATA[
+  		select bno, title, content, regDate, updateDate from 
+		    (select
+		    /*+ index_desc(tbl_board1 pk_board)  */
+		    rownum rn, bno, title, content, regDate, updateDate from tbl_board1
+		    	 where rownum<=#{pageNum}*#{amount}) where rn>(#{pageNum}-1)*#{amount}
+  		]]> -->
   	</select>
   	<delete id="delete" parameterType="Long">
   		delete from tbl_board1 where bno = #{bno}
