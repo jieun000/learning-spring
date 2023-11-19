@@ -116,4 +116,12 @@
 			<item value="C:\Users\mondi\Documents\workspace-sts-3.9.18.RELEASE\spring0809_2"/>
 		</list>
 	</section>
+	<section name="ChooseWorkspaceDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="405"/>
+		<item key="DIALOG_Y_ORIGIN" value="232"/>
+	</section>
+	<section name="WORKBENCH_SETTINGS">
+		<list key="ENABLED_TRANSFERS">
+		</list>
+	</section>
 </section>
