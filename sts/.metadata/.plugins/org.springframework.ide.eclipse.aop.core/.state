@@ -5,6 +5,10 @@
 <aop-project name="spring05_service"/>
 <aop-project name="spring06_include"/>
 <aop-project name="spring02_mapper"/>
+<aop-project name="sprint08_"/>
 <aop-project name="spring01_db"/>
+<aop-project name="spring08_"/>
 <aop-project name="spring03_mapper+"/>
+<aop-project name="spring07_button"/>
+<aop-project name="1120_project_translate"/>
 </aop-reference-model>
