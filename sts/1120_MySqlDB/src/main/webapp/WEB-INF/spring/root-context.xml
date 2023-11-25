@@ -9,14 +9,13 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 											<!-- 여기서 객체 생성해서 -->
-		<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-			 <!--   <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
-			<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:XE"></property> --> 
-			<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
-			<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:XE"></property>
-			<property name="username" value="bigdata"></property>
-			<property name="password" value="1234"></property>
-		</bean> 
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+	    <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+	    <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/fiding"></property>
+	    <property name="username" value="root"></property>
+	    <property name="password" value="1234"></property>
+	</bean>
+
 		<!-- HikariCp Configuration -->  <!-- 여기서 파라미터 보내줌 , getter 생성 -->
 		<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
 			<constructor-arg ref="hikariConfig"></constructor-arg>

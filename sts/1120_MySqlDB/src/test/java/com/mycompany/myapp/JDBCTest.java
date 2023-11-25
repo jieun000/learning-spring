@@ -20,7 +20,7 @@ public class JDBCTest {
 		}
 	}
 	
-	// @Test
+	@Test
 	public void testConntection() {
 		try(Connection con 
 			= DriverManager.getConnection(

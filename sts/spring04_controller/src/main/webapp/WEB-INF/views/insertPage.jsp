@@ -13,11 +13,11 @@
 			<input type="text" name="title" />
 		</div>
 		<div>
-			<label for="title">내용</label>
+			<label for="content">내용</label>
 			<input type="text" name="content" />
 		</div>
 		<div>
-			<label for="title">작성자</label>
+			<label for="writer">작성자</label>
 			<input type="text" name="writer" />
 		</div>
 		<div>

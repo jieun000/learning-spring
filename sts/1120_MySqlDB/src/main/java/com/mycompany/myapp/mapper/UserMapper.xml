@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.mycompany.myapp.mapper.UserMapper">
+  	<select id="getList" resultType="com.mycompany.myapp.vo.UserVO">
+  		select * from tableName
+  	</select>
+  	<insert id="insert"  parameterType="com.mycompany.myapp.vo.UserVO">
+  		insert into tableName values(null, #{person}, Now())
+  	</insert>
+  </mapper>
