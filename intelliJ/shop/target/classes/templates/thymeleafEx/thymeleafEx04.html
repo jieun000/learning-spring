@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf04</title>
+</head>
+<body>
+    <h1>Thymeleaf 링크 처리 예제</h1>
+    <div>
+        <a th:href="@{/thymeleaf/ex01}">예제1 페이지 이동</a>
+    </div>
+    <div>
+        <a th:href="@{https://www.thymeleaf.org/}">thymeleaf 공식 페이지</a>
+    </div>
+    <div>
+<!--        http://localhost/thymeleaf/ex04?param1=%ED%8C%8C%EB%9E%8C1&param2=%ED%8C%8C%EB%9E%8C2-->
+        <a th:href="@{/thymeleaf/ex04(param1='파라미터 데이터1', param2='파라미터 데이터2')}">thymeleaf 파라미터 전달</a>
+        <h1>파라미터 전달 예제</h1>
+        <div th:text="${param1}"></div>
+        <div th:text="${param2}"></div>
+    </div>
+</body>
+</html>
