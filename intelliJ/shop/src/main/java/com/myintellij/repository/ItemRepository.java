@@ -3,13 +3,15 @@ package com.myintellij.repository;
 import com.myintellij.entity.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
 // JpaRepository를 상속받는 ItemRepository. 2개의 제네릭 타입 <엔티티 타입 클래스, 기본키 타입>
 // JpaRepository(기본적인 CRUD 및 페이징 처리를 위한 메소드가 정의)
-public interface ItemRepository extends JpaRepository<Item, Long> {
+public interface ItemRepository extends JpaRepository<Item, Long>,
+                                        QuerydslPredicateExecutor<Item>, com.myintellij.repository.ItemRepositoryCustom {
 
     List<Item> findByItemNm(String itemNm);
     List<Item> findByItemNmOrItemDetail(String itemNm, String itemDetail);
