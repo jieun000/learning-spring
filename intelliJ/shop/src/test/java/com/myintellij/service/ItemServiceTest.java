@@ -59,7 +59,7 @@ public class ItemServiceTest {
         itemFormDto.setStockNumber(100);
 
         List<MultipartFile> multipartFileList = createMultipartFiles();
-        Long itemId = itemService.savedItem(itemFormDto, multipartFileList);
+        Long itemId = itemService.saveItem(itemFormDto, multipartFileList);
         List<ItemImg> itemImgList =
                 itemImgRepository.findByItemIdOrderByIdAsc(itemId);
         Item item = itemRepository.findById(itemId).orElseThrow(EntityNotFoundException::new);
@@ -71,6 +71,5 @@ public class ItemServiceTest {
         assertEquals(itemFormDto.getStockNumber(), item.getStockNumber());
         // 첫 번째 파일만 원본 이미지 파일 이름 같은지 확인
         assertEquals(multipartFileList.get(0).getOriginalFilename(), itemImgList.get(0).getOriImgName());
-        System.out.println("테스트 완료");
     }
 }

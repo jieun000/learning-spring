@@ -1,6 +1,5 @@
-package java.com.shop;
+package com.myintellij;
 
-import com.myintellij.ShopApplication;
 import com.myintellij.entity.Member;
 import com.myintellij.repository.MemberRepository;
 import jakarta.persistence.EntityManager;

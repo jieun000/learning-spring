@@ -2,12 +2,11 @@ package com.myintellij.entity;
 
 import com.myintellij.constant.ItemSellStatus;
 import com.myintellij.dto.ItemFormDto;
+import com.myintellij.exception.OutOfStockException;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-
-import java.time.LocalDateTime;
 @Entity // 반드시 기본키를 가져야 함
 @Table(name="item") // 어떤 테이블과 매핑될지 지정
 @Getter @Setter
@@ -16,7 +15,7 @@ public class Item extends BaseEntity {
 
     @Id // 기본키
     @Column(name="item_id") // 매핑될 컬럼명
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // 기본키 생성 전략 AUTO
+    @GeneratedValue(strategy = GenerationType.AUTO) // 기본키 생성 전략 AUTO
     private Long id; // 상품 코드
 
     @Column(nullable = false, length = 50) // not null
@@ -30,8 +29,8 @@ public class Item extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private ItemSellStatus itemSellStatus; // 상품 판매 상태
-    private LocalDateTime regTime; // 등록 시간
-    private LocalDateTime updateTime; // 수정 시간
+//    private LocalDateTime regTime; // 등록 시간
+//    private LocalDateTime updateTime; // 수정 시간
 
     public void updateItem(ItemFormDto itemFormDto) {
         this.itemNm = itemFormDto.getItemNm();
@@ -39,5 +38,14 @@ public class Item extends BaseEntity {
         this.stockNumber = itemFormDto.getStockNumber();
         this.itemDetail = itemFormDto.getItemDetail();
         this.itemSellStatus = itemFormDto.getItemSellStatus();
+    }
+
+    public void removeStock(int stockNumber) {
+        int restStock = this.stockNumber - stockNumber; // 주문 후 남은 수량
+        if(restStock < 0) { // 재고 부족 예외 처리
+            throw new OutOfStockException("상품 재고 부족. (현재 재고 수량: " + this.stockNumber + ")");
+        }
+        // 주문 후 남은 재고 수량을 현재 재고 값으로 할당
+        this.stockNumber = restStock;
     }
 }

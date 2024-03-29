@@ -3,6 +3,7 @@ package com.myintellij.service;
 import com.myintellij.dto.ItemFormDto;
 import com.myintellij.dto.ItemImgDto;
 import com.myintellij.dto.ItemSearchDto;
+import com.myintellij.dto.MainItemDto;
 import com.myintellij.entity.Item;
 import com.myintellij.entity.ItemImg;
 import com.myintellij.repository.ItemImgRepository;
@@ -26,7 +27,7 @@ public class ItemService {
     private final ItemImgService itemImgService;
     private final ItemImgRepository itemImgRepository;
 
-    public Long savedItem(ItemFormDto itemFormDto, List<MultipartFile> itemImgFileList) throws Exception {
+    public Long saveItem(ItemFormDto itemFormDto, List<MultipartFile> itemImgFileList) throws Exception {
         // 상품 등록
         Item item = itemFormDto.creatItem(); // 상품 등록 홈으로부터 입력받은 데이터로 item 객체 생성
         itemRepository.save(item); // 상품 데이터 저장
@@ -71,6 +72,11 @@ public class ItemService {
     @Transactional(readOnly = true)
     public Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
         return itemRepository.getAdminItemPage(itemSearchDto, pageable);
+    }
+
+    @Transactional(readOnly = true)
+    public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
+        return itemRepository.getMainItemPage(itemSearchDto, pageable);
     }
 
 }

@@ -1,4 +1,4 @@
-package java.com.shop;
+package com.myintellij;
 
 import com.myintellij.ShopApplication;
 import com.myintellij.constant.ItemSellStatus;

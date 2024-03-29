@@ -32,4 +32,28 @@ public class Order {
 
     private LocalDateTime regTime;
     private LocalDateTime updateTime;
+
+
+    public void addOrderItem(OrderItem orderItem) {
+        orderItems.add(orderItem); // orderItems 에 주문 상품 정보들 담아줌
+        orderItem.setOrder(this); // Order, OrderItem(양방향 참조 관계)이므로 여기도 세팅
+    }
+    public static Order creatOrder(Member member, List<OrderItem> orderItemList) {
+        Order order = new Order();
+        order.setMember(member); // 상품 주문 회원 정보 세팅
+        // 여러 개의 주문 상품을 장바구니 페이지에 담을 수 있도록 리스트 형태로 받아 주문 객체에 orderItem 객체를 추가
+        for(OrderItem orderItem : orderItemList) {
+            order.addOrderItem(orderItem);
+        }
+        order.setOrderStatus(OrderStatus.ORDER); // 주문 상태를 'ORDER'로 세팅
+        order.setOrderDate(LocalDateTime.now()); // 주문 시간 = 현재 시간
+        return order;
+    }
+    public int getTotalPrice() { // 총 주문 금액 계산
+        int totalPrice = 0;
+        for(OrderItem orderItem : orderItems) {
+            totalPrice += orderItem.getTotalPrice();
+        }
+        return totalPrice;
+    }
 }

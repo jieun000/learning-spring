@@ -44,7 +44,7 @@ public class itemController {
         }
         try {
             // 상품 저장 로직(상품 정보, 상품 이미지 정보)
-            itemService.savedItem(itemFormDto, itemImgFileList);
+            itemService.saveItem(itemFormDto, itemImgFileList);
         } catch(Exception e) {
             model.addAttribute("errorMessage", "상품 등록 중 에러 발생");
             return "item/itemForm";
@@ -82,15 +82,26 @@ public class itemController {
         return "redirect:/";
     }
 
+    // value에 상품 관리 화면 진입 시 URL에 1.페이지 번호가 없는 경우와 2.페이지 번호가 있는 경우의 2가지 매핑
     @GetMapping(value = {"/admin/items", "/admin/items/{page}"})
     public String itemManage(ItemSearchDto itemSearchDto, Model model,
                              @PathVariable("page") Optional<Integer> page) {
+        // 페이징을 위해 PageRequest of 메소드를 통해 Pageable 객체를 생성함 (조회할 때 페이지 번호, 한 번에 가지고 올 데이터 수)
+        // URL 경로에 페이지 번호가 있으면 해당 페이지를 조회하도록 세팅, 페이지 번호가 없으면 0페이지를 조회하도록 함.
         Pageable pageable = (Pageable) PageRequest.of(page.isPresent() ? page.get() : 0, 3);
-        Page<Item> items = itemService.getAdminItemPage(itemSearchDto, pageable);
-        model.addAttribute("items", items);
+        Page<Item> items = itemService.getAdminItemPage(itemSearchDto, pageable); // (조회 조건, 페이징 정보)
+        model.addAttribute("items", items); // 조회한 상품 데이터 및 페이지 정보를 뷰에 전달
+        // 페이지 전환 시 기존 검색 조건을 유지한 채 이동할 수 있게 뷰에 다시 전달
         model.addAttribute("itemSearchDto", itemSearchDto);
+        // 상품 관리 메뉴 하단에 보여줄 페이지 번호의 최대 개수.
         model.addAttribute("maxPage", 5);
         return "/item/itemMng";
     }
 
+    @GetMapping(value = "/item/{itemId}")
+    public String itemDtl(Model model, @PathVariable("itemId") Long itemId) {
+        ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
+        model.addAttribute("item", itemFormDto);
+        return "item/itemDtl";
+    }
 }
