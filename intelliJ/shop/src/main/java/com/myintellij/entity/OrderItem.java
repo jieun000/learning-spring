@@ -36,4 +36,9 @@ public class OrderItem extends BaseEntity {
         return orderPrice * count;
     }
 
+    public void cancel() {
+        // 주문 취소 시 상품 제고 증가 메소드 호출
+        this.getItem().addStock(count);
+    }
+
 }

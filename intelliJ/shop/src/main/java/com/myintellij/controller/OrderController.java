@@ -1,20 +1,24 @@
 package com.myintellij.controller;
 
 import com.myintellij.dto.OrderDto;
+import com.myintellij.dto.OrderHistDto;
 import com.myintellij.service.OrderService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -44,6 +48,28 @@ public class OrderController {
         } catch(Exception e) {
             return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
         } // 결과값으로 생선된 주문 번호와 요청이 성공했다는 HTTP 응답 상태 코드를 반환.
+        return new ResponseEntity<Long>(orderId, HttpStatus.OK);
+    }
+
+    @GetMapping(value = {"/orders", "/orders/{page}"})
+    public String orderHist(@PathVariable("page") Optional<Integer> page, Principal principal, Model model) {
+        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 4); // 한 번에 가져올 주문 개수 4개
+        // 로그인 한 회원의 (이메일, 페이징 객체)로 화면에 전달할 주문 목록 데이터를 리턴값으로 받음
+        Page<OrderHistDto> orderHistDtoList = orderService.getOrderList(principal.getName(), pageable);
+        model.addAttribute("orders", orderHistDtoList);
+        model.addAttribute("page", pageable.getPageNumber());
+        model.addAttribute("maxPage", 5);
+        return "order/orderHist";
+    }
+
+    @PostMapping("/order/{orderId}/cancel")
+    public @ResponseBody ResponseEntity cancelOrder(@PathVariable("orderId") Long orderId, Principal principal) {
+        // 자바스크립트에서 취소할 주문 번호는 조작이 가능하므로
+        // 다른 사람의 주문을 취소하지 못하게 주문 취소 권한 검사
+        if(!orderService.validateOrder(orderId, principal.getName())) {
+            return new ResponseEntity<String>("주문 취소 권한 없음", HttpStatus.FORBIDDEN);
+        } // 주문 취소 로직 호출
+        orderService.cancelOrder(orderId);
         return new ResponseEntity<Long>(orderId, HttpStatus.OK);
     }
 }
