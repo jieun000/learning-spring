@@ -1,6 +1,5 @@
 package com.myintellij;
 
-import com.myintellij.ShopApplication;
 import com.myintellij.constant.ItemSellStatus;
 import com.myintellij.entity.Item;
 import com.myintellij.entity.Member;

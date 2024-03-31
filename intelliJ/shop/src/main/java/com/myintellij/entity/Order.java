@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 @Table(name = "orders")
 @Getter @Setter
-public class Order {
+public class Order extends BaseEntity {
     @Id @GeneratedValue
     @Column(name = "order_id")
     private Long id;
@@ -38,7 +38,7 @@ public class Order {
         orderItems.add(orderItem); // orderItems 에 주문 상품 정보들 담아줌
         orderItem.setOrder(this); // Order, OrderItem(양방향 참조 관계)이므로 여기도 세팅
     }
-    public static Order creatOrder(Member member, List<OrderItem> orderItemList) {
+    public static Order createOrder(Member member, List<OrderItem> orderItemList) {
         Order order = new Order();
         order.setMember(member); // 상품 주문 회원 정보 세팅
         // 여러 개의 주문 상품을 장바구니 페이지에 담을 수 있도록 리스트 형태로 받아 주문 객체에 orderItem 객체를 추가

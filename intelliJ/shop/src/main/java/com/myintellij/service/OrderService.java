@@ -36,9 +36,9 @@ public class OrderService {
         // (주문할 상품 엔티티, 주문 수량)로 주문 상품 엔티티 생성
         OrderItem orderItem = OrderItem.createOrderItem(item, orderDto.getCount());
         orderItemList.add(orderItem);
-    
+
         // (회원 정보, 주문할 상품 리스트 정보)로 주문 엔티티를 생성
-        Order order = Order.creatOrder(member, orderItemList);
+        Order order = Order.createOrder(member, orderItemList);
         // 생성한 주문 엔티티를 저장
         orderRepository.save(order);
         return order.getId();
@@ -82,4 +82,18 @@ public class OrderService {
         Order order = orderRepository.findById(orderId).orElseThrow(EntityNotFoundException::new);
         order.cancelOrder();
     }
+
+    public Long orders(List<OrderDto> orderDtoList, String email) {
+        Member member = memberRepository.findByEmail(email);
+        List<OrderItem> orderItemList = new ArrayList<>();
+        for(OrderDto orderDto : orderDtoList) { // 주문할 상품 리스트를 만듦
+            Item item = itemRepository.findById(orderDto.getItemId()).orElseThrow(EntityNotFoundException::new);
+            OrderItem orderItem = OrderItem.createOrderItem(item, orderDto.getCount());
+            orderItemList.add(orderItem);
+        }
+        Order order = Order.createOrder(member, orderItemList); // (회원, 주문 상품 목록)으로 주문 엔티티 만듦
+        orderRepository.save(order); // 주문 데이터를 저장
+        return order.getId();
+    }
+
 }
