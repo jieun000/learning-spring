@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class MainController {
 
 	@GetMapping("sbb")
-	@ResponseBody
+	@ResponseBody // URL요청에 대한 응답으로 문자열을 리턴하라
 	public String index() {
 		return "index";
 	}

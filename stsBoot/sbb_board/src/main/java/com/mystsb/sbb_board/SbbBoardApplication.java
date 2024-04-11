@@ -11,7 +11,7 @@ public class SbbBoardApplication {
 	}
 
 }
-//프로젝트 구조
+//프로젝트 구조        
 //src/main/java: 자바 파일을 저장하는 공간
 //com.mystsb.sbb_board: sbb_board의 자바 파일을 저장하는 공간
 //SbbBoardApplication.java: 프로젝트명+Application으로 시작을 담당하는 파일 자동 생성
