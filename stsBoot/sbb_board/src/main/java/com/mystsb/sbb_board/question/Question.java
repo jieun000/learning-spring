@@ -1,12 +1,17 @@
-package com.mystsb.sbb_board;
+package com.mystsb.sbb_board.question;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import com.mystsb.sbb_board.answer.Answer;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,4 +31,8 @@ public class Question {
 	private String content;
 	
 	private LocalDateTime createDate;
+	
+	// mappedBy="참조 엔티티 속성명", cascade=질문 삭제시 답변도 모두 삭제
+	@OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
+	private List<Answer> answerList;
 }
