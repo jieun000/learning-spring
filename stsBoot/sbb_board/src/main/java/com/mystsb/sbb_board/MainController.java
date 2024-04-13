@@ -13,4 +13,9 @@ public class MainController {
 		return "index";
 	}
 	
+	@GetMapping("/") // 루트 URL
+	public String root() {
+		return "redirect:/question/list";
+	}
+	
 }
