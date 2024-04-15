@@ -46,8 +46,11 @@
 			</div>
 			<!-- 답변 반복 끝 -->
 			<!-- 답변 작성 -->
-			<form th:action="@{|/answer/create/${question.id}|}" method="POST">
-				<textarea class="form-control" name="content" id="content" rows="15"></textarea>
+			<form th:action="@{|/answer/create/${question.id}|}" method="POST" 
+				th:object="${answerForm}" class="my-3">
+				<div th:replace="~{form_errors :: formErrorsFragment}"></div>
+				
+				<textarea class="form-control" name="content" id="content" rows="15" th:field="*{content}"></textarea>
 				<input class="btn btn-primary my-2" type="submit" value="답변 등록">
 			</form>
 
