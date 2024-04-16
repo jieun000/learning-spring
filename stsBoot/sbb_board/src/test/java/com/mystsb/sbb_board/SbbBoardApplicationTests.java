@@ -136,12 +136,21 @@ class SbbBoardApplicationTests {
 //		assertEquals("자동으로 생성됩니다.", answerList.get(0).getContent());
 //	}
 	
+//	@Test
+//	void testJpa12() {
+//		for(int i=1; i<=300; i++) {
+//			String subject = String.format("테스트 데이터: [%03d]", i);
+//			String content = "내용 없음";
+//			this.questionService.create(subject, content);
+//		}
+//	}
+	
 	@Test
-	void testJpa12() {
+	void testJpa13() {
 		for(int i=1; i<=300; i++) {
 			String subject = String.format("테스트 데이터: [%03d]", i);
 			String content = "내용 없음";
-			this.questionService.create(subject, content);
+			this.questionService.create(subject, content, null);
 		}
 	}
 }

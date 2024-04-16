@@ -1,14 +1,17 @@
 package com.mystsb.sbb_board.answer;
 
 import java.time.LocalDateTime;
+import java.util.Set;
 
 import com.mystsb.sbb_board.question.Question;
+import com.mystsb.sbb_board.user.SiteUser;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,4 +31,11 @@ public class Answer {
 	@ManyToOne // DB에서는 외래키 관계 생성됨
 	private Question question; // 질문 엔티티를 참조하기 위함
 	
+	@ManyToOne
+	private SiteUser author;
+	
+	private LocalDateTime modifyDate;
+	
+	@ManyToMany
+	Set<SiteUser> voter;
 }
