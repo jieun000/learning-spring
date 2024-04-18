@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>layout을 사용</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+    <!-- simpleMDE: https://github.com/sparksuite/simplemde-markdown-editor -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+</head>
+<body>
+    <nav th:replace="navbar :: navbarFragment"></nav>
+    <div class="container mt-3" style="height: auto !important;">
+        <div class="row" style="height: auto !important;">
+            <div class="col-sm-12 col-md-3 col-lg-2 p-2">
+                <nav th:replace="sidebar :: sidebarFragment"></nav>
+            </div>
+            <div class="col-sm-12 col-md-9 col-lg-10 p-2">
+                <th:block layout:fragment="content"></th:block>
+            </div>
+        </div>
+    </div>
+    
+    <script th:src="@{/bootstrap.min.js}"></script>
+    <th:block layout:fragment="script"></th:block>
+</body>
+</html>

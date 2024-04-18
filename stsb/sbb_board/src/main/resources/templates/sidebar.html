@@ -1,0 +1,21 @@
+<nav th:fragment="sidebarFragment" class="border-top border-secondary">
+
+    <div class="list-group">
+        <a th:href="@{/question/list/qna}" 
+            th:classappend="${category} == 'qna' ? 'active'" 
+            class="category-group rounded-0 list-group-item list-group-item-action list-group-item-light">
+            질문과 답변
+        </a>
+        <a th:href="@{/question/list/free}" 
+            th:classappend="${category} == 'free' ? 'active'" 
+            class="category-group rounded-0 list-group-item list-group-item-action list-group-item-light">
+            자유게시판
+        </a>
+        <a th:href="@{/question/list/bug}" 
+            th:classappend="${category} == 'bug' ? 'active'" 
+            class="category-group rounded-0 list-group-item list-group-item-action list-group-item-light">
+            건의사항
+        </a>
+    </div>
+
+</nav>
