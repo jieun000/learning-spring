@@ -60,4 +60,13 @@ public class AnswerService {
         Pageable pageable = PageRequest.of(page, 5, Sort.by(sorts));
         return this.answerRepository.findAllByQuestion(question, pageable);
     }
+	
+	public List<Answer> getListByUser(SiteUser user) {
+		Optional<List<Answer>> answers = this.answerRepository.findAllByAuthor(user);
+		if(answers.isPresent()) {
+			return answers.get();
+		} else {
+			throw new DataNotFoundException("answer not found");
+		}
+	}
 }

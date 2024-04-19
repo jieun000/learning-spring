@@ -105,4 +105,18 @@ public class QuestionService {
 		};
 	}
 	
+	
+	public List<Question> getListByUser(SiteUser user) {
+		Optional<List<Question>> questions = this.questionRepository.findAllByAuthor(user);
+		if(questions.isPresent()) {
+			return questions.get();
+		} else {
+			throw new DataNotFoundException("question not found");
+		}
+	}
+	
+	public void viewsUp(Question question) {
+		question.setViews(question.getViews() + 1);
+		this.questionRepository.save(question);
+	}
 }

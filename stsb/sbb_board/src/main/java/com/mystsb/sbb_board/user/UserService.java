@@ -2,11 +2,11 @@ package com.mystsb.sbb_board.user;
 
 import java.util.Optional;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.mystsb.sbb_board.DataNotFoundException;
+import com.mystsb.sbb_board.question.QuestionRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 public class UserService {
 	private final UserRepository userRepository;
 	private final PasswordEncoder passwordEncoder;
+	private final QuestionRepository questionRepository;
 	
 	public SiteUser create(String username, String email, String password) {
 		SiteUser user = new SiteUser();
@@ -35,4 +36,13 @@ public class UserService {
 			throw new DataNotFoundException("siteUser not found");
 		}
 	}
+	
+	public boolean isSamePassword(SiteUser user, String password) {
+		return passwordEncoder.matches(password, user.getPassword());
+	}
+	public void modifyPassword(SiteUser user, String password) {
+		user.setPassword(passwordEncoder.encode(password));
+		this.userRepository.save(user);
+	}
+
 }
