@@ -1,7 +1,6 @@
 package com.mystsb.sbb_board.question;
 
 import java.security.Principal;
-import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -26,10 +25,12 @@ import com.mystsb.sbb_board.user.UserService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/question") // URL prefix
+@Slf4j
 public class QuestionController {
 
 	private final QuestionService questionService;
@@ -42,6 +43,7 @@ public class QuestionController {
 			@RequestParam(value = "kw", defaultValue = "") String kw,
 			@PathVariable(value = "category") String category
 			) {
+		log.info("page: {}, kw: {}", page, kw);
 		Category cate = this.categoryService.getCategoryByTitle(category);
 		//List<Question> questionList = this.questionRepository.findAll();
 		Page<Question> paging = this.questionService.getList(page, kw, cate);
