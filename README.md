@@ -13,20 +13,21 @@
 
 ### IntelliJ
 
-IntelliJ 프레임워크를 사용하여 Spring을 공부했습니다.
+IntelliJ 프레임워크를 사용하여 spring을 공부했습니다.
 
 #### intelliJ/shop:
 
-'백견불여일타'라는 책을 보고 만든 프로젝트입니다. 
+[『백견불여일타 스프링 부트 쇼핑몰 프로젝트 with JPA』](https://github.com/roadbook2/shop) 도서를 보고 만든 쇼핑몰 프로젝트입니다. <br>
+=> 모두 스프링부트3 버전으로 업데이트 진행하였습니다.
 
 ### STS
 
-학원에서 Spring을 공부하면서 만든 프로젝트들입니다.
+학원에서 스프링 프레임워크를 공부하면서 만든 프로젝트들입니다. MVC 패턴을 익히기 위해 단계적 절차로 구성된 프로젝트입니다.
 
 ### STSB
 
-Spring Boot 프레임워크를 사용하여 Spring을 공부했습니다.
+스프링 부트 프레임워크를 사용하여 Spring을 공부했습니다.
 
 #### sbb_board
 
-'Do it!'이라는 책을 참고하여 만든 프로젝트입니다.
+[『Do it! 점프 투 스프링 부트 3』](https://github.com/pahkey/sbb3) 도서를 보고 만든 게시판 프로젝트입니다. 
