@@ -21,9 +21,5 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @PostMapping
-    public SiteUser createUser(@RequestBody SiteUser user) {
-        return userService.saveUser(user);
-    }
-    
+
 }

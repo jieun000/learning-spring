@@ -6,9 +6,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class HomeController {
+	
 	@GetMapping("/")
 	@ResponseBody
-	public String hello() {
+	public String root() {
 		return "server run";
+//		return "redirect:/question/list/qna";
 	}
+	
 }
